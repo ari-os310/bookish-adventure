@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: blanchedalmond;
+}
+
+header {
+  padding-left: 1em;
+  padding-top: 1em;
+  color: #333;
+  border-bottom: 1px dotted #ccc;
+  background-color: white;
+}
+
+main {
+  padding: 2em;
+}
+
+.tagline {
+  margin-left: 0.5em;
+  font-size: 50%;
+  color: #666;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+footer {
+  font-family: "Overpass", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

@@ -1,0 +1,18 @@
+.card {
+  margin-bottom: 1em;
+}
+
+.card-title {
+  font-family: "Overpass", sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.card-subtitle {
+  font-family: "Overpass", sans-serif;
+  font-size: 1.25em;
+}
+
+.card-text {
+  padding-top: 1em;
+}
