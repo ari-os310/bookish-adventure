@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { getAllBooks } from './helpers/booktonica-api-fetcher';
 import BookCardList from './components/BookCardList';
-// import SearchBox from "./components/SearchBox";
+import GenreMenu from './components/Dropdown';
+import SearchBox from "./components/SearchBox";
 
 class App extends Component {
   constructor(props) {
@@ -17,24 +18,12 @@ class App extends Component {
     getAllBooks().then(books => this.setState({ books: books }));
   }
 
-  updateSearch = event => {
-    this.setState({ search: event.target.value });
-  };
-
   render() {
-    let filteredBooks = this.state.books.filter(book => {
-      return (
-        book.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-      );
-    });
 
     return (
       <div className='App'>
-        <input
-          type='text'
-          value={this.state.search}
-          onChange={this.updateSearch}
-        />
+        <GenreMenu /> 
+        <SearchBox />
         <BookCardList books={this.state.books} />
       </div>
     );

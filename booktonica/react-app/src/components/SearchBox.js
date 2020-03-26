@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 class SearchBox extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      search: 'Search Books...'
-    };
+    this.state = { search: 'Search Books...' };
   }
 
   updateSearch = event => {
@@ -13,15 +11,15 @@ class SearchBox extends Component {
   };
 
   render() {
-    let filteredBooks = this.props.books.filter(book => {
-      return book.title.toLowerCase().indexOf(this.state.search) !== -1;
-    });
+    // let filteredBooks = this.props.books.filter(book => {
+    //   return book.title.toLowerCase().indexOf(this.state.search) !== -1;
+    // });
 
     return (
       <div>
         <input
           type='text'
-          value={this.props.search}
+          value={this.state.search}
           onChange={this.updateSearch}
         />
       </div>
