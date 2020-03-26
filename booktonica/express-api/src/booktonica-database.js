@@ -43,6 +43,15 @@ class BooktonicaDatabase {
         ORDER BY b.publication_date DESC`
     );
   }
+
+  getAllGenres() {
+    return this.db.any(
+      `SELECT
+        b.genre,
+        FROM books b 
+        ORDER BY b.genre `
+    ).then(console.log(this.getAllGenres));
+  }
 }
 
 module.exports = BooktonicaDatabase;
