@@ -47,7 +47,7 @@ class BooktonicaDatabase {
   getAllGenres() {
     return this.db.any(
       `SELECT
-        b.genre
+        DISTINCT b.genre
         FROM books b 
         WHERE b.genre IS NOT NULL
         ORDER BY b.genre `

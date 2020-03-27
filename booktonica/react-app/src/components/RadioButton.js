@@ -10,7 +10,7 @@ class SortButton extends Component {
   
     handleOptionChange = event => {
       this.setState({
-        selectedOption: event.target.value
+        selectedOption: event.currentTarget.value
       });
       console.log("View by",event.target.value);
     };
@@ -24,20 +24,23 @@ class SortButton extends Component {
       
       render() {
         return ( 
-          <div onChange={this.handleOptionChange} onSubmit = {this.handleFormSubmit}>
+          <div>
             <input 
             type="radio" 
-            value="newest" /> 
+            value="newest" 
+            onChange={this.handleOptionChange} onSubmit = {this.handleFormSubmit}/> 
             Most Recently Published
             
             <input 
             type="radio" 
-            value="oldest"/> 
+            value="oldest"
+            onChange={this.handleOptionChange} onSubmit = {this.handleFormSubmit}/> 
             Published Long Ago
             
             <input 
             type="radio" 
-            value="abc"/> 
+            value="abc"
+            onChange={this.handleOptionChange} onSubmit = {this.handleFormSubmit}/> 
            View Alphabetically
           </div>
          )

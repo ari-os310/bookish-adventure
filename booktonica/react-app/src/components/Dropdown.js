@@ -1,50 +1,44 @@
 import React, { Component } from 'react';
-import { getAllGenres, getBooksByGenre } from '../helpers/booktonica-api-fetcher';
+import { getAllGenres } from '../helpers/booktonica-api-fetcher';
 
-class GenreMenu extends Component {
+class Dropdown extends Component {
   constructor(props) {
     super(props);
-    this.state = { genre: [] };
+    this.state = {
+      genres: [],
+      selectedGenre: []
+    };
   }
 
-  handleChange = event => {
-    this.setState({ genre: event.target.value });
-  };
+//   handleChange = event => {
+//     this.setState({ selectedGenre: event.target.value });
+//   };
 
   handleSubmit = event => {
-    console.log('View books by: ' + this.state.genre);
     event.preventDefault();
   };
 
   componentDidMount() {
-    getAllGenres().then(genres => this.setState({ genre: genres }));
-    console.log('This state', this.state.genre)
+    getAllGenres().then(genres => this.setState({ selectedGenre: genres }));
   }
 
-  componentDidMount() {
-    getBooksByGenre().then(genres => this.setState({ genre: genres }));
-    console.log('This state', this.state.genre)
-  }
-  
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Sort by genre : <br />
-          <select value={this.state.genre} onChange={this.handleChange}>
-            <option value='Comic'>Comic</option>
-            <option value='Feminism'>Feminism</option>
-            <option value='Graphic Novel'>Graphic Novel</option>
-            <option value='Humor'>Humor</option>
-            <option value='Memoir'>Memoir</option>
-            <option value='Nonfiction'>Nonfiction</option>
-            <option value='Science Fiction'>Science Fiction</option>
-          </select>
-        </label>
-        <input type='submit' value='Submit' />
-      </form>
+      <div className='drop-down'>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Sort by genre : <br />
+            <select>
+              {this.state.selectedGenre.map(genre => (
+                <option value='genre.value'>{genre.genre}</option>
+              ))}
+            </select>
+          </label>
+          <input type='submit' value='Submit' />
+        </form>
+      </div>
     );
   }
 }
 
-export default GenreMenu;
+export default Dropdown;
