@@ -100,8 +100,7 @@ class BooktonicaDatabase {
       *
       FROM books b
       WHERE b.title 
-      LIKE '% $1 %' `,
-      book
+      LIKE '%${book}%' `
     );
   }
 }
