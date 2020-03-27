@@ -47,10 +47,51 @@ class BooktonicaDatabase {
   getAllGenres() {
     return this.db.any(
       `SELECT
-        b.genre,
+        b.genre
         FROM books b 
+        WHERE b.genre IS NOT NULL
         ORDER BY b.genre `
-    ).then(console.log(this.getAllGenres));
+    );
+  }
+
+  getBooksByGenre(genre) {
+    return this.db.any(
+      `SELECT
+        *
+        FROM books b 
+        WHERE genre = $1`,
+      genre
+    );
+  }
+
+  // created this and then realized getAllBooks already sort by newest pub_date
+  sortNewFirst() {
+    return this.db.any(
+      `SELECT
+      *
+      FROM books b 
+      ORDER BY b.publication_date DESC`
+    );
+  }
+
+  sortOldFirst() {
+    return this.db.any(
+      `SELECT
+      *
+      FROM books b 
+      ORDER BY b.publication_date 
+      `
+    );
+  }
+
+  sortByABC() {
+    return this.db.any(
+      `SELECT
+      *
+      FROM books b 
+      ORDER BY b.title 
+      `
+    )
   }
 }
 

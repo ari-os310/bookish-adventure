@@ -40,8 +40,25 @@ api.get('/books', (_unused, res) =>
   db.getAllBooks().then(books => res.send(books))
 );
 
-api.get('/books/genre', (_unused, res) =>
+api.get('/books/genres', (_unused, res) =>
   db.getAllGenres().then(genres => res.send(genres))
+);
+
+api.get('/books/genres/:genre', (req, res) => {
+  const genre = req.params.genre;
+  db.getBooksByGenre(genre).then(genre => res.send(genre));
+});
+
+api.get('/books/newest', (_unused, res) =>
+  db.sortNewFirst().then(newest => res.send(newest))
+);
+
+api.get('/books/oldest', (_unused, res) =>
+  db.sortOldFirst().then(oldest => res.send(oldest))
+);
+
+api.get('/books/alphabetically', (_unused, res) =>
+  db.sortByABC().then(alphabetically => res.send(alphabetically))
 );
 
 // sanityCheck will make sure the DB is working before listening
