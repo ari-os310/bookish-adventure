@@ -91,6 +91,16 @@ api.get('/books/alphabetically', (_unused, res) => {
     });
 });
 
+api.get('/books/search/:book', (req, res) => {
+  const book = req.params.book;
+  db.searchByBook(book)
+    .then(book => res.send(book))
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
+
 // sanityCheck will make sure the DB is working before listening
 db.sanityCheck().then(() => {
   api.listen(PORT, () => {

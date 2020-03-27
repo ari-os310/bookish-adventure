@@ -91,8 +91,18 @@ class BooktonicaDatabase {
       FROM books b 
       ORDER BY b.title 
       `
-    )
+    );
+  }
+
+  searchByBook(book) {
+    return this.db.any(
+      `SELECT
+      *
+      FROM books b
+      WHERE b.title 
+      LIKE '% $1 %' `,
+      book
+    );
   }
 }
-
 module.exports = BooktonicaDatabase;

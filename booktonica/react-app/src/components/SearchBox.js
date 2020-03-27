@@ -3,12 +3,22 @@ import React, { Component } from 'react';
 class SearchBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { search: 'Search Books...' };
+    this.state = {
+      bookSearch: [],
+      searching: []
+    };
   }
 
   updateSearch = event => {
-    this.setState({ search: event.target.value });
+    this.setState({ bookSearch: event.target.value });
   };
+
+  addSearchedToState = books => {
+    this.setState({ bookSearch: [] });
+    this.setState({ searching: [] });
+  };
+  
+  
 
   render() {
     // let filteredBooks = this.props.books.filter(book => {
@@ -18,8 +28,11 @@ class SearchBox extends Component {
     return (
       <div>
         <input
+          id='search'
+          label='Search'
+          margin='normal'
           type='text'
-          value={this.state.search}
+          value={this.state.bookSearch}
           onChange={this.updateSearch}
         />
       </div>

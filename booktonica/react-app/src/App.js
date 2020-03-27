@@ -11,14 +11,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
-      // search: 'Search Books...'
+      books: [],
+      search: 'Search Books...'
     };
     this.initialstate = {...this.state};
   }
 
   componentDidMount() {
     getAllBooks().then(books => this.setState({ books: books }));
+    // getBooksByGenre().then()
+    // would I implement this here with a onSubmit so the books render according to genre?
   }
 
   handleReset = event => {
