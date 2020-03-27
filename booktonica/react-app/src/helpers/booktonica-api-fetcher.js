@@ -21,6 +21,23 @@ export function getAllBooks() {
   });
 }
 
+export function getAllGenres() {
+  const path = `/books/genres`;
+  return fetch(path, {
+    headers: {
+      // This header is needed or React app won't proxy it along to Express
+      Accept: "application/json"
+    }
+  }).then(resp => {
+    if (resp.ok) {
+      return resp.json();
+    } else {
+      throw new Error(generateErrorMessage(path, resp)
+      );
+    }
+  });
+}
+
 export function getBooksByGenre(genre) {
   const path = `/books/genres/${genre}`;
   return fetch(path, {
