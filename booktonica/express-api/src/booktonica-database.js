@@ -53,7 +53,7 @@ class BooktonicaDatabase {
         ORDER BY b.genre `
     );
   }
-
+  
   getBooksByGenre(genre) {
     return this.db.any(
       `SELECT

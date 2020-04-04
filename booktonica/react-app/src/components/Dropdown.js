@@ -1,32 +1,34 @@
 import React, { Component } from 'react';
-import { getAllGenres } from '../helpers/booktonica-api-fetcher';
 
 class Dropdown extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      genres: [],
-      selectedGenre: []
-    };
+      selectedGenre: 'select a genre'
+    }
   }
 
-  handleSubmit = event => {
+  handleChange = (event) => {
     event.preventDefault();
+    this.setState({selectedGenre: event.target.value});
   };
 
-  componentDidMount() {
-    getAllGenres().then(genres => this.setState({ selectedGenre: genres }));
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.filter(this.state.selectedGenre);
   }
-  
+
   render() {
     return (
       <div className='drop-down'>
-        <form onSubmit={this.handleSubmit}>
+        <form 
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}>
           <label>
             Sort by genre : <br />
             <select>
-              {this.state.selectedGenre.map(genre => (
-                <option value='genre.value'>{genre.genre}</option>
+              {this.props.genres.map((genre) => (
+                <option key = {genre.genre} value={genre.genre}>{genre.genre}</option>
               ))}
             </select>
           </label>
