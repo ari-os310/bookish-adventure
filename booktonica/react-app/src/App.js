@@ -1,42 +1,43 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getAllBooks } from './helpers/booktonica-api-fetcher';
+import { getAllBooks, getBooksByGenre } from './helpers/booktonica-api-fetcher';
 import BookCardList from './components/BookCardList';
 import Dropdown from './components/Dropdown';
-import SearchBox from "./components/SearchBox";
+import SearchBox from './components/SearchBox';
 import SortButton from './components/RadioButton';
 import Reset from './components/Reset';
+
+const initialState = {
+  books: [],
+  search: 'Search Books...',
+};
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      books: [],
-      search: 'Search Books...'
-    };
-    this.initialstate = {...this.state};
+    this.state = {...initialState };
   }
 
   componentDidMount() {
-    getAllBooks().then(books => this.setState({ books: books }));
-    // getBooksByGenre().then()
-    // would I implement this here with a onSubmit so the books render according to genre?
+    getAllBooks().then((books) => this.setState({ books: books }));
   }
 
-  handleReset = event => {
-    event.preventDefault();
-    this.setState(this.initialState);
+  resetState = () => {
+    this.setState(initialState);
+  };
+
+  filterByGenre = (genre) => {
+    getBooksByGenre(genre).then((books) => this.setState({ books: books }));
   };
 
   render() {
-
     return (
       <div className='App'>
-        <Dropdown /> 
+        <Dropdown filter={this.filterByGenre} />
         <SortButton />
         <SearchBox />
         <BookCardList books={this.state.books} />
-        <Reset onClick = {this.handleReset}/>
+        <Reset reset={this.resetState} />
       </div>
     );
   }

@@ -10,10 +10,6 @@ class Dropdown extends Component {
     };
   }
 
-//   handleChange = event => {
-//     this.setState({ selectedGenre: event.target.value });
-//   };
-
   handleSubmit = event => {
     event.preventDefault();
   };
@@ -21,7 +17,7 @@ class Dropdown extends Component {
   componentDidMount() {
     getAllGenres().then(genres => this.setState({ selectedGenre: genres }));
   }
-
+  
   render() {
     return (
       <div className='drop-down'>

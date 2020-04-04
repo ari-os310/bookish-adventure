@@ -1,20 +1,16 @@
 import React from 'react';
 
-// class Reset extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-
-//     };
-
-//   }
-//   handleReset = event => {
-//     event.preventDefault();
-//     this.setState(this.initialState);
-//   };
-const Reset = props => {
+const Reset = ({ reset }) => {
+  // console.debug(props);
+  // // props looks like {reset : }
+  // const {reset} = props;
   return (
-    <button type='button' onClick={props.handleReset}>
+    <button
+      type='button'
+      onClick={(event) => {
+        event.preventDefault();
+        reset();
+      }}>
       Reset
     </button>
   );
