@@ -45,6 +45,7 @@ api.get('/books', (_unused, res) => {
     });
 });
 
+// GET ALL DISTINCT GENRES 
 api.get('/books/genres', (_unused, res) => {
   db.getAllGenres()
     .then(genres => res.send(genres))
@@ -54,6 +55,7 @@ api.get('/books/genres', (_unused, res) => {
     });
 });
 
+// GET BOOKS BY GENRE
 api.get('/books/genres/:genre', (req, res) => {
   const genre = req.params.genre;
   db.getBooksByGenre(genre)
@@ -64,6 +66,7 @@ api.get('/books/genres/:genre', (req, res) => {
     });
 });
 
+// SORT NEWEST BOOKS FIRST
 api.get('/books/newest', (_unused, res) => {
   db.sortNewFirst()
     .then(newest => res.send(newest))
@@ -73,6 +76,7 @@ api.get('/books/newest', (_unused, res) => {
     });
 });
 
+// SORT OLDEST BOOKS FIRST
 api.get('/books/oldest', (_unused, res) => {
   db.sortOldFirst()
     .then(oldest => res.send(oldest))
@@ -82,6 +86,7 @@ api.get('/books/oldest', (_unused, res) => {
     });
 });
 
+// SORT BOOKS ABC
 api.get('/books/alphabetically', (_unused, res) => {
   db.sortByABC()
     .then(alphabetically => res.send(alphabetically))
@@ -91,6 +96,7 @@ api.get('/books/alphabetically', (_unused, res) => {
     });
 });
 
+// SEARCH BOOK BY TITLE OR AUTHOR NAME
 api.get('/books/search/:book', (req, res) => {
   const book = req.params.book;
   db.searchByBook(book)

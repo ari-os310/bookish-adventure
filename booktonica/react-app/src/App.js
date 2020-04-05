@@ -7,19 +7,16 @@ import SearchBox from './components/SearchBox';
 import SortButton from './components/SortButton';
 import Reset from './components/Reset';
 
-// const initialState = {
-//   books: [],
-//   search: 'Search Books...',
-// };
+const initialState = {
+  books: [],
+  genres : [],
+  search: 'Search Books...',
+};
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      books: [],
-      genres: [],
-      search: 'Search Books...'
-    };
+    this.state = {...initialState };
   }
 
   componentDidMount() {

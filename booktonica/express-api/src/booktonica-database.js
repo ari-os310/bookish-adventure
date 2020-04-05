@@ -57,8 +57,14 @@ class BooktonicaDatabase {
   getBooksByGenre(genre) {
     return this.db.any(
       `SELECT
-        *
-        FROM books b 
+        b.id,
+        b.title,
+        b.subtitle,
+        b.summary,
+        b.cover_image_url,
+        to_char(b.publication_date, 'DD Mon YYYY') as publication_date, 
+        a.name AS author_name FROM books b 
+        INNER JOIN authors a on a.id = b.author_id
         WHERE genre = $1`,
       genre
     );
@@ -68,18 +74,30 @@ class BooktonicaDatabase {
   sortNewFirst() {
     return this.db.any(
       `SELECT
-      *
-      FROM books b 
-      ORDER BY b.publication_date DESC`
+        b.id,
+        b.title,
+        b.subtitle,
+        b.summary,
+        b.cover_image_url,
+        to_char(b.publication_date, 'DD Mon YYYY') as publication_date, 
+        a.name AS author_name FROM books b 
+        INNER JOIN authors a on a.id = b.author_id
+        ORDER BY b.publication_date DESC`
     );
   }
 
   sortOldFirst() {
     return this.db.any(
       `SELECT
-      *
-      FROM books b 
-      ORDER BY b.publication_date 
+        b.id,
+        b.title,
+        b.subtitle,
+        b.summary,
+        b.cover_image_url,
+        to_char(b.publication_date, 'DD Mon YYYY') as publication_date, 
+        a.name AS author_name FROM books b 
+        INNER JOIN authors a on a.id = b.author_id
+        ORDER BY b.publication_date 
       `
     );
   }
@@ -87,9 +105,15 @@ class BooktonicaDatabase {
   sortByABC() {
     return this.db.any(
       `SELECT
-      *
-      FROM books b 
-      ORDER BY b.title 
+        b.id,
+        b.title,
+        b.subtitle,
+        b.summary,
+        b.cover_image_url,
+        to_char(b.publication_date, 'DD Mon YYYY') as publication_date, 
+        a.name AS author_name FROM books b 
+        INNER JOIN authors a on a.id = b.author_id
+        ORDER BY b.title 
       `
     );
   }

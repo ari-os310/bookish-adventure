@@ -15,7 +15,7 @@ class SearchBox extends Component {
           id='search'
           label='Search'
           placeholder = "Search Book..."
-          // margin='normal'
+          margin='normal'
           type='text'
           onChange={this.updateSearch}
         />
