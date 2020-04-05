@@ -9,6 +9,7 @@
     "bootstrap": "^4.4.1",
     "jquery": "^1.9.1",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "reactstrap": "^8.4.1",

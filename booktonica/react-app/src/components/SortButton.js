@@ -10,7 +10,8 @@ class SortButton extends Component {
           name='sortBooks'
           onChange={this.props.sortNew}
         />
-        Most Recently Published
+        Recently Published 
+        
         <input
           type='radio'
           value='oldest'
@@ -18,6 +19,7 @@ class SortButton extends Component {
           onChange={this.props.sortOld}
         />
         Published Long Ago
+        
         <input
           type='radio'
           value='abc'

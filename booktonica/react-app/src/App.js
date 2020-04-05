@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Navbar} from 'react-bootstrap/Navbar';
+import Navbar from 'react-bootstrap/Navbar';
 import './App.css';
 import {
   getAllBooks,
@@ -60,26 +60,25 @@ class App extends Component {
   render() {
     // console.log("this is state",this.state.genres)
     return (
-     
       <div className='App'>
-         <Navbar className="bg-light justify-content-between">
-        <Dropdown
-          genres={this.state.genres}
-          books={this.state.books}
-          filter={this.filterByGenre}
-        />
-        <Searchbar
-          searchBookName={this.searchBookName}
-          reset={this.resetBookState}
-        />
-        <SortButton
-          sortNew={this.sortNew}
-          sortOld={this.sortOld}
-          sortABC={this.sortABC}
-        />
-        <BookCardList books={this.state.books} />
-        <Reset reset={this.resetBookState} />
+        <Navbar className='justify-content-between'>
+          <Dropdown
+            genres={this.state.genres}
+            books={this.state.books}
+            filter={this.filterByGenre}
+          />
+          <SortButton
+            sortNew={this.sortNew}
+            sortOld={this.sortOld}
+            sortABC={this.sortABC}
+          />
+          <Searchbar
+            searchBookName={this.searchBookName}
+            reset={this.resetBookState}
+          />
+          <Reset reset={this.resetBookState} />
         </Navbar>
+        <BookCardList books={this.state.books} />
       </div>
     );
   }

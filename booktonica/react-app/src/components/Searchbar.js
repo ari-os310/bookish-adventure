@@ -8,10 +8,10 @@ class SearchBar extends Component {
       this.props.reset();
     }
   };
-
+  
   render() {
     return (
-      <div className = "searchbar" >
+      <div className='searchbar'>
         <input
           id='search'
           label='Search'
