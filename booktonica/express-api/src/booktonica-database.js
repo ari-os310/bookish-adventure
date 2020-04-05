@@ -94,13 +94,39 @@ class BooktonicaDatabase {
     );
   }
 
+// is there a way to shorten this query and do the same thing ?
   searchByBook(book) {
     return this.db.any(
       `SELECT
-      *
-      FROM books b
-      WHERE b.title 
-      LIKE '%${book}%' `
+          b.id,
+          b.title,
+          b.subtitle,
+          b.summary,
+          b.cover_image_url,
+          to_char(b.publication_date, 'DD Mon YYYY') as publication_date, 
+          a.name AS author_name 
+          FROM books b 
+          INNER JOIN authors a 
+          ON a.id = b.author_id
+          WHERE lower(b.title)
+          LIKE '%${book}%' 
+        
+        UNION
+      
+      SELECT
+          b.id,
+          b.title,
+          b.subtitle,
+          b.summary,
+          b.cover_image_url,
+          to_char(b.publication_date, 'DD Mon YYYY') as publication_date, 
+          a.name AS author_name 
+          FROM books b 
+          INNER JOIN authors a 
+          ON a.id = b.author_id
+          WHERE lower(a.name)
+          LIKE '%${book}%'
+          ORDER BY author_name `
     );
   }
 }

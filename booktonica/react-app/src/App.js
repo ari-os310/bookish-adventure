@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getAllBooks, getAllGenres, getBooksByGenre, sortNewFirst, sortOldFirst, sortByABC } from './helpers/booktonica-api-fetcher';
+import { getAllBooks, getAllGenres, getBooksByGenre, sortNewFirst, sortOldFirst, sortByABC, searchByBook } from './helpers/booktonica-api-fetcher';
 import BookCardList from './components/BookCardList';
 import Dropdown from './components/Dropdown';
 import SearchBox from './components/SearchBox';
@@ -47,6 +47,10 @@ class App extends Component {
      sortByABC().then((books) => this.setState({ books: books }));
   }
 
+  searchBookName = (bookName) => {
+     searchByBook(bookName).then((books) => this.setState({ books: books }));
+  }
+
   render() {
     // console.log("this is state",this.state.genres)
     return (
@@ -55,14 +59,16 @@ class App extends Component {
           genres={this.state.genres}
           books={this.state.books}
           filter={this.filterByGenre} 
+        /> 
+        <SearchBox 
+          searchBookName={this.searchBookName}
         />
         <SortButton
           sortNew={this.sortNew}
           sortOld={this.sortOld}
           sortABC={this.sortABC}
-          books={this.state.books} 
           />
-        <SearchBox />
+      
         <BookCardList books={this.state.books} />
         <Reset reset={this.resetState} />
       </div>

@@ -106,4 +106,20 @@ export function sortByABC() {
   });
 }
 
+export function searchByBook(bookTitle) {
+  const path = `/books/search/${bookTitle}`;
+  return fetch(path, {
+    headers: {
+      // This header is needed or React app won't proxy it along to Express
+      Accept: "application/json"
+    }
+  }).then(resp => {
+    if (resp.ok) {
+      return resp.json();
+    } else {
+      throw new Error(generateErrorMessage(path, resp)
+      );
+    }
+  });
+}
 
