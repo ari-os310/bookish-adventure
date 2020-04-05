@@ -53,7 +53,7 @@ class BooktonicaDatabase {
         ORDER BY b.genre `
     );
   }
-  
+
   getBooksByGenre(genre) {
     return this.db.any(
       `SELECT
@@ -118,7 +118,7 @@ class BooktonicaDatabase {
     );
   }
 
-// is there a way to shorten this query and do the same thing ?
+  // is there a way to shorten this query and do the same thing ?
   searchByBook(book) {
     return this.db.any(
       `SELECT

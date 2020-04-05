@@ -5,18 +5,17 @@ function generateErrorMessage(path, resp) {
 }
 
 export function getAllBooks() {
-  const path = "/books";
+  const path = '/books';
   return fetch(path, {
     headers: {
       // This header is needed or React app won't proxy it along to Express
-      Accept: "application/json"
-    }
-  }).then(resp => {
+      Accept: 'application/json',
+    },
+  }).then((resp) => {
     if (resp.ok) {
       return resp.json();
     } else {
-      throw new Error(generateErrorMessage(path, resp)
-      );
+      throw new Error(generateErrorMessage(path, resp));
     }
   });
 }
@@ -26,14 +25,13 @@ export function getAllGenres() {
   return fetch(path, {
     headers: {
       // This header is needed or React app won't proxy it along to Express
-      Accept: "application/json"
-    }
-  }).then(resp => {
+      Accept: 'application/json',
+    },
+  }).then((resp) => {
     if (resp.ok) {
       return resp.json();
     } else {
-      throw new Error(generateErrorMessage(path, resp)
-      );
+      throw new Error(generateErrorMessage(path, resp));
     }
   });
 }
@@ -43,14 +41,13 @@ export function getBooksByGenre(genre) {
   return fetch(path, {
     headers: {
       // This header is needed or React app won't proxy it along to Express
-      Accept: "application/json"
-    }
-  }).then(resp => {
+      Accept: 'application/json',
+    },
+  }).then((resp) => {
     if (resp.ok) {
       return resp.json();
     } else {
-      throw new Error(generateErrorMessage(path, resp)
-      );
+      throw new Error(generateErrorMessage(path, resp));
     }
   });
 }
@@ -60,14 +57,13 @@ export function sortNewFirst() {
   return fetch(path, {
     headers: {
       // This header is needed or React app won't proxy it along to Express
-      Accept: "application/json"
-    }
-  }).then(resp => {
+      Accept: 'application/json',
+    },
+  }).then((resp) => {
     if (resp.ok) {
       return resp.json();
     } else {
-      throw new Error(generateErrorMessage(path, resp)
-      );
+      throw new Error(generateErrorMessage(path, resp));
     }
   });
 }
@@ -77,14 +73,13 @@ export function sortOldFirst() {
   return fetch(path, {
     headers: {
       // This header is needed or React app won't proxy it along to Express
-      Accept: "application/json"
-    }
-  }).then(resp => {
+      Accept: 'application/json',
+    },
+  }).then((resp) => {
     if (resp.ok) {
       return resp.json();
     } else {
-      throw new Error(generateErrorMessage(path, resp)
-      );
+      throw new Error(generateErrorMessage(path, resp));
     }
   });
 }
@@ -94,14 +89,13 @@ export function sortByABC() {
   return fetch(path, {
     headers: {
       // This header is needed or React app won't proxy it along to Express
-      Accept: "application/json"
-    }
-  }).then(resp => {
+      Accept: 'application/json',
+    },
+  }).then((resp) => {
     if (resp.ok) {
       return resp.json();
     } else {
-      throw new Error(generateErrorMessage(path, resp)
-      );
+      throw new Error(generateErrorMessage(path, resp));
     }
   });
 }
@@ -111,15 +105,13 @@ export function searchByBook(bookTitle) {
   return fetch(path, {
     headers: {
       // This header is needed or React app won't proxy it along to Express
-      Accept: "application/json"
-    }
-  }).then(resp => {
+      Accept: 'application/json',
+    },
+  }).then((resp) => {
     if (resp.ok) {
       return resp.json();
     } else {
-      throw new Error(generateErrorMessage(path, resp)
-      );
+      throw new Error(generateErrorMessage(path, resp));
     }
   });
 }
-

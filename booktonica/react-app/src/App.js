@@ -1,31 +1,39 @@
 import React, { Component } from 'react';
+import {Navbar} from 'react-bootstrap/Navbar';
 import './App.css';
-import { getAllBooks, getAllGenres, getBooksByGenre, sortNewFirst, sortOldFirst, sortByABC, searchByBook } from './helpers/booktonica-api-fetcher';
+import {
+  getAllBooks,
+  getAllGenres,
+  getBooksByGenre,
+  sortNewFirst,
+  sortOldFirst,
+  sortByABC,
+  searchByBook,
+} from './helpers/booktonica-api-fetcher';
 import BookCardList from './components/BookCardList';
 import Dropdown from './components/Dropdown';
-import SearchBox from './components/SearchBox';
+import Searchbar from './components/Searchbar';
 import SortButton from './components/SortButton';
 import Reset from './components/Reset';
 
 const initialState = {
   books: [],
-  genres : [],
+  genres: [],
   search: 'Search Books...',
 };
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {...initialState };
+    this.state = { ...initialState };
   }
 
   componentDidMount() {
-    getAllBooks().then((books) => this.setState({ books: books }));
+    this.resetBookState();
     getAllGenres().then((genres) => this.setState({ genres: genres }));
-    
   }
 
-  resetState = () => {
+  resetBookState = () => {
     getAllBooks().then((books) => this.setState({ books: books }));
   };
 
@@ -34,40 +42,44 @@ class App extends Component {
   };
 
   sortNew = () => {
-     sortNewFirst().then((books) => this.setState({ books: books }));
-  }
+    sortNewFirst().then((books) => this.setState({ books: books }));
+  };
 
   sortOld = () => {
-     sortOldFirst().then((books) => this.setState({ books: books }));
-  }
+    sortOldFirst().then((books) => this.setState({ books: books }));
+  };
+
   sortABC = () => {
-     sortByABC().then((books) => this.setState({ books: books }));
-  }
+    sortByABC().then((books) => this.setState({ books: books }));
+  };
 
   searchBookName = (bookName) => {
-     searchByBook(bookName).then((books) => this.setState({ books: books }));
-  }
+    searchByBook(bookName).then((books) => this.setState({ books: books }));
+  };
 
   render() {
     // console.log("this is state",this.state.genres)
     return (
+     
       <div className='App'>
-        <Dropdown 
+         <Navbar className="bg-light justify-content-between">
+        <Dropdown
           genres={this.state.genres}
           books={this.state.books}
-          filter={this.filterByGenre} 
-        /> 
-        <SearchBox 
+          filter={this.filterByGenre}
+        />
+        <Searchbar
           searchBookName={this.searchBookName}
+          reset={this.resetBookState}
         />
         <SortButton
           sortNew={this.sortNew}
           sortOld={this.sortOld}
           sortABC={this.sortABC}
-          />
-      
+        />
         <BookCardList books={this.state.books} />
-        <Reset reset={this.resetState} />
+        <Reset reset={this.resetBookState} />
+        </Navbar>
       </div>
     );
   }

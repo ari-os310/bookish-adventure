@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 
-class SearchBox extends Component {
-
-  updateSearch = event => {
-     if (event.target.value.length > 0) {
+class SearchBar extends Component {
+  updateSearch = (event) => {
+    if (event.target.value.length > 0) {
       this.props.searchBookName(event.target.value.toLowerCase());
+    } else {
+      this.props.reset();
     }
   };
 
   render() {
     return (
-      <div>
+      <div className = "searchbar" >
         <input
           id='search'
           label='Search'
-          placeholder = "Search Book..."
+          placeholder='Search Book...'
           margin='normal'
           type='text'
           onChange={this.updateSearch}
@@ -24,4 +25,4 @@ class SearchBox extends Component {
   }
 }
 
-export default SearchBox;
+export default SearchBar;

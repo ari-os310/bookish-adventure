@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Col,
   Card,
@@ -6,8 +6,8 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle
-} from "reactstrap";
+  CardSubtitle,
+} from 'reactstrap';
 
 /**
  * Learn more about reactstrap Card component
@@ -20,15 +20,15 @@ class BookCard extends Component {
       summary,
       title,
       author_name,
-      publication_date
+      publication_date,
     } = this.props.book;
     return (
-      <Col xs="4">
+      <Col xs='4'>
         <Card>
           <CardImg
-            className="bookCover"
+            className='bookCover'
             src={cover_image_url}
-            alt="Book cover"
+            alt='Book cover'
           />
           <CardBody>
             <CardTitle>{title}</CardTitle>

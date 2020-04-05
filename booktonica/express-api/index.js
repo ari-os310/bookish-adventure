@@ -45,7 +45,7 @@ api.get('/books', (_unused, res) => {
     });
 });
 
-// GET ALL DISTINCT GENRES 
+// GET ALL DISTINCT GENRES
 api.get('/books/genres', (_unused, res) => {
   db.getAllGenres()
     .then(genres => res.send(genres))
