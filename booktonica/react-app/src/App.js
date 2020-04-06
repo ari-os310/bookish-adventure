@@ -78,6 +78,7 @@ class App extends Component {
           />
           <Reset reset={this.resetBookState} />
         </Navbar>
+        <br />
         <BookCardList books={this.state.books} />
       </div>
     );

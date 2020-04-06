@@ -133,8 +133,8 @@ class BooktonicaDatabase {
           INNER JOIN authors a 
           ON a.id = b.author_id
           WHERE lower(b.title)
-          LIKE '%${book}%' 
-        
+          LIKE '%$1#%' 
+          
         UNION
       
       SELECT
@@ -149,8 +149,9 @@ class BooktonicaDatabase {
           INNER JOIN authors a 
           ON a.id = b.author_id
           WHERE lower(a.name)
-          LIKE '%${book}%'
-          ORDER BY author_name `
+          LIKE '%$1#%'
+          ORDER BY author_name `,
+      book
     );
   }
 }
