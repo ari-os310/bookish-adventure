@@ -115,3 +115,37 @@ export function searchByBook(bookTitle) {
     }
   });
 }
+
+export function postComment(comment) {
+  const path = `/books/comments`;
+  return fetch(path, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(comment),
+  }).then((resp) => {
+    if (resp.ok) {
+      return resp.json();
+    } else {
+      throw new Error(generateErrorMessage(path, resp));
+    }
+  });
+}
+
+export function getAllComments() {
+  const path = `/books/comments`;
+  return fetch(path, {
+    headers: {
+      // This header is needed or React app won't proxy it along to Express
+      Accept: 'application/json',
+    },
+  }).then((resp) => {
+    if (resp.ok) {
+      return resp.json();
+    } else {
+      throw new Error(generateErrorMessage(path, resp));
+    }
+  });
+}

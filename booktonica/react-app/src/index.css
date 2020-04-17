@@ -4,15 +4,15 @@ body {
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: blanchedalmond;
+  background-color: #FFCC00;
 }
 
 header {
   padding-left: 1em;
   padding-top: 1em;
-  color: #333;
-  border-bottom: 1px dotted #ccc;
-  background-color: white;
+  color: rgb(0, 0, 0);
+  border-bottom: 3px solid rgb(99, 42, 42);
+  background-color: rgba(203, 156, 25, .95);
 }
 
 main {
@@ -22,7 +22,7 @@ main {
 .tagline {
   margin-left: 0.5em;
   font-size: 50%;
-  color: #666;
+  color: rgba(0, 0, 0, .6);
 }
 
 h1,
@@ -39,4 +39,8 @@ footer {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.navbar{
+  background-color: rgb(203, 156, 25);
 }

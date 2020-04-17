@@ -107,6 +107,26 @@ api.get('/books/search/:book', (req, res) => {
     });
 });
 
+// GET USER COMMENTS
+api.get('/books/comments', (_unused, res) => {
+  db.getAllComments()
+    .then(comments => res.send(comments))
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
+
+// POST BOOK COMMENT
+api.post('/books/comments', (req, res) => {
+  db.postComment(req.body)
+    .then(comment => res.send(comment))
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
+
 // sanityCheck will make sure the DB is working before listening
 db.sanityCheck().then(() => {
   api.listen(PORT, () => {

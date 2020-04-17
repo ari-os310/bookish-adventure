@@ -61,7 +61,11 @@ class App extends Component {
     // console.log("this is state",this.state.genres)
     return (
       <div className='App'>
-        <Navbar className='justify-content-between'>
+        <Navbar
+          className='navbar'
+          className='justify-content-between'
+          sticky='top'
+          border-bottom='3px solid rgb(99, 42, 42)'>
           <Dropdown
             genres={this.state.genres}
             books={this.state.books}

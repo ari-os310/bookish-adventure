@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 
 class SearchBar extends Component {
   updateSearch = (event) => {
-    if (event.target.value.length > 0) {
-      this.props.searchBookName(event.target.value.toLowerCase());
+    let searchInput = event.target.value;
+    if (searchInput.length > 0) {
+      this.props.searchBookName(searchInput.toLowerCase());
     } else {
       this.props.reset();
     }
   };
-  
+
   render() {
     return (
       <div className='searchbar'>

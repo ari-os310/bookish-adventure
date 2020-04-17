@@ -24,7 +24,7 @@ class BookCard extends Component {
     } = this.props.book;
     return (
       <Col xs='4'>
-        <Card>
+        <Card style={{ width: '20rem' }}>
           <CardImg
             className='bookCover'
             src={cover_image_url}

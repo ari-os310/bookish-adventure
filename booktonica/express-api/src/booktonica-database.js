@@ -154,5 +154,20 @@ class BooktonicaDatabase {
       book
     );
   }
+  
+  getAllComments() {
+    return this.db.any(`SELECT * FROM user_comments`);
+  }
+
+  postComment(comment) {
+    return this.db.one(
+      `INSERT INTO user_comments 
+      (comment, user_id, book_id) 
+      VALUES ($1, $2, $3)
+      RETURNING * `,
+      [comment.comment, 1, comment.book_id]
+    );
+  }
+  
 }
 module.exports = BooktonicaDatabase;
