@@ -1,4 +1,4 @@
-## Final App Assessment
+## How To Run:
 
 ### Setup Instructions
 
