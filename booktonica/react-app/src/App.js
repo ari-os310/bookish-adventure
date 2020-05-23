@@ -62,8 +62,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Navbar
-          className='navbar'
-          className='justify-content-between'
+          className='navbar justify-content-between'
           sticky='top'
           border-bottom='3px solid rgb(99, 42, 42)'>
           <Dropdown
