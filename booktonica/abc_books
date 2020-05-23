@@ -1,5 +1,0 @@
-SELECT
-        *
-        FROM books b 
-        ORDER BY b.title 
-        

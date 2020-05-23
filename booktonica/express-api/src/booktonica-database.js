@@ -17,7 +17,7 @@ class BooktonicaDatabase {
     console.log('Postgres DB => ', connectionString);
     this.db = pgp(connectionString);
   }
-
+  
   sanityCheck() {
     console.log('\tTesting database connection...');
     return this.getBooksCount().then(count =>
